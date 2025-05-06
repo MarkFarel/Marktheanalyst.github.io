@@ -4742,25 +4742,73 @@ input, select, textarea {
 }
 
 /* Keyframes for image fading */
+.image-swap-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 16 / 9; /* Adjust ratio or use height: 400px; */
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.swap-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.swap-image.first {
+    z-index: 2;
+    animation-name: fade1;
+}
+
+.swap-image.second {
+    z-index: 1;
+    animation-name: fade2;
+}
+
+/* Define the fade animations */
 @keyframes fade1 {
-    0%, 45% {
+    0% {
         opacity: 1;
     }
-    50%, 100% {
+    25% {
         opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
 @keyframes fade2 {
-    0%, 45% {
+    0% {
         opacity: 0;
     }
-    50%, 95% {
+    25% {
         opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0;
     }
     100% {
         opacity: 0;
     }
 }
-
 
